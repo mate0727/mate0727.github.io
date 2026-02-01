@@ -5,75 +5,128 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para ti ❤️</title>
     <style>
+        /* ESTILOS GENERALES */
         body {
-            background-color: #ffe6ea; /* Fondo rosa suave */
-            color: #4a4a4a;
+            margin: 0;
+            padding: 0;
             font-family: 'Georgia', serif;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             min-height: 100vh;
-            margin: 0;
-            padding: 20px;
+            overflow: hidden; 
         }
 
-        .carta {
-            background: #fff;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(214, 51, 132, 0.15);
-            max-width: 500px;
+        /* FONDO DE LA PÁGINA (TULIPANES) */
+        .fondo {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            /* Aquí está tu imagen de fondo */
+            background-image: url('https://i.pinimg.com/736x/88/2c/3f/882c3f153a794179d673523589b53757.jpg');
+            background-size: cover; /* Para que cubra toda la pantalla */
+            background-position: center;
+            z-index: -1;
+            filter: brightness(0.7); /* Oscurece un poco la foto para que se lea la carta */
+        }
+
+        /* PANTALLA DE INICIO (PORTADA) */
+        #pantalla-inicio {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 230, 234, 0.9); /* Un velo rosa semitransparente */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            transition: opacity 1s ease;
+        }
+
+        .boton-abrir {
+            padding: 15px 40px;
+            font-size: 20px;
+            background-color: #6a4c93; /* Un morado que combina con los tulipanes */
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(106, 76, 147, 0.4);
+            animation: latido 1.5s infinite;
+        }
+
+        @keyframes latido {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* LA CARTA */
+        .carta {
+            display: none; 
+            background: rgba(255, 255, 255, 0.95); /* Blanco casi opaco */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            max-width: 500px;
+            width: 85%;
             text-align: center;
-            border: 2px solid #fff0f5;
+            border: 2px solid #ddd;
+            position: relative;
+            z-index: 10;
+            max-height: 85vh; 
+            overflow-y: auto; 
         }
 
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #d63384;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            color: #6a4c93; /* Morado */
+            margin-top: 0;
+            font-size: 2em;
         }
 
         .imagen-contenedor {
             width: 100%;
             border-radius: 10px;
-            margin-bottom: 25px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        
+
         img {
             width: 100%;
             display: block;
         }
 
         p {
-            font-size: 1.1em;
+            color: #333;
             line-height: 1.6;
-            margin-bottom: 15px;
-            color: #555;
+            font-size: 1.1em;
         }
 
         .firma {
+            color: #6a4c93;
             font-weight: bold;
-            color: #d63384;
-            margin-top: 20px;
             font-size: 1.3em;
+            margin-top: 25px;
         }
 
-        audio {
-            width: 100%;
-            margin-top: 20px;
-            border-radius: 20px;
-        }
     </style>
 </head>
 <body>
 
-    <div class="carta">
+    <div class="fondo"></div>
+
+    <div id="pantalla-inicio">
+        <h1 style="margin-bottom: 20px; color: #6a4c93;">Tengo algo para ti... 💌</h1>
+        <button class="boton-abrir" onclick="abrirCarta()">ABRIR REGALO</button>
+    </div>
+
+    <div class="carta" id="carta">
         <h1>TE AMOOO</h1>
 
         <div class="imagen-contenedor">
@@ -91,12 +144,25 @@
         </p>
         
         <p class="firma">¿Quieres ser mi San Valentín?</p>
-
-        <audio controls autoplay loop>
-            <source src="cancion.mp3" type="audio/mp3">
-            Tu navegador no soporta el audio.
-        </audio>
     </div>
+
+    <audio id="musica" loop>
+        <source src="cancion.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        function abrirCarta() {
+            document.getElementById('pantalla-inicio').style.opacity = '0';
+            setTimeout(function() {
+                document.getElementById('pantalla-inicio').style.display = 'none';
+            }, 1000);
+            
+            document.getElementById('carta').style.display = 'block';
+            
+            var audio = document.getElementById('musica');
+            audio.play();
+        }
+    </script>
 
 </body>
 </html>
