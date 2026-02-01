@@ -181,4 +181,41 @@
             Si me pidieran un motivo para hacerlo, serían muchos: tu manera de mirar, de escuchar, de estar cuando importa. Por eso y por todo lo que aún no se dice...
         </p>
         
-        <div class="carta-decoracion" style="margin
+        <div class="carta-decoracion" style="margin-top: 30px;">✨🌹✨</div>
+        <p class="firma">¿Quieres ser mi San Valentín?</p>
+    </div>
+
+    <audio id="musica" loop>
+        <source src="cancion.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        function abrirCarta() {
+            document.getElementById('pantalla-inicio').style.opacity = '0';
+            setTimeout(function() {
+                document.getElementById('pantalla-inicio').style.display = 'none';
+            }, 1000);
+            
+            document.getElementById('carta').style.display = 'block';
+            
+            var audio = document.getElementById('musica');
+            audio.play();
+        }
+
+        function crearCorazones() {
+            const contenedor = document.querySelector('.fondo');
+            for(let i=0; i<25; i++) {
+                let corazon = document.createElement('div');
+                corazon.innerHTML = '❤';
+                corazon.className = 'corazon';
+                corazon.style.left = Math.random() * 100 + 'vw';
+                corazon.style.animationDuration = Math.random() * 5 + 5 + 's';
+                corazon.style.fontSize = Math.random() * 20 + 15 + 'px';
+                contenedor.appendChild(corazon);
+            }
+        }
+        crearCorazones();
+    </script>
+
+</body>
+</html>
