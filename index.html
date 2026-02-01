@@ -9,7 +9,7 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Georgia', serif; /* Letra clásica de carta */
+            font-family: 'Georgia', serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -25,13 +25,13 @@
             width: 100%;
             height: 100%;
             
-            /* AQUÍ BUSCA TU ARCHIVO SUBIDO */
-            background-image: url('https://raw.githubusercontent.com/mate0727/mate0727.github.io/refs/heads/main/fondo.jfif.jfif');
+            /* AQUÍ ESTÁ EL CAMBIO: El nombre exacto con doble extensión */
+            background-image: url('fondo.jfif.jfif');
             
             background-size: cover; 
             background-position: center;
             z-index: -1;
-            /* Esto oscurece un poco la foto para que no moleste a la vista */
+            /* Oscurecemos un poco para que se lea la carta */
             filter: brightness(0.6); 
         }
 
@@ -70,10 +70,9 @@
             100% { transform: scale(1); }
         }
 
-        /* DISEÑO DE LA CARTA (PAPEL) */
+        /* DISEÑO DE LA CARTA */
         .carta {
             display: none; 
-            /* Color papel crema/blanco */
             background-color: #fffdf7; 
             padding: 40px;
             max-width: 500px;
@@ -81,13 +80,12 @@
             text-align: center;
             position: relative;
             z-index: 10;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5); /* Sombra realista */
-            border-radius: 5px; /* Bordes poco redondeados como papel */
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5); 
+            border-radius: 5px; 
             max-height: 80vh;
             overflow-y: auto;
         }
         
-        /* Efecto de borde doble elegante */
         .borde-carta {
             border: 2px solid #d63384;
             padding: 20px;
