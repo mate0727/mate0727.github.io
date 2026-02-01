@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para ti</title>
+    <style>
+        body {
+            /* Fondo color crema suave */
+            background-color: #fdfbf7; 
+            color: #5d3a50;
+            font-family: 'Helvetica', sans-serif; /* Letra limpia */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        .contenedor {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Sombra suave */
+            max-width: 90%;
+            width: 350px;
+            border: 1px solid #eee;
+        }
+
+        h1 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #d63384; 
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 1.1em;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* IMAGEN: Aquí se ajusta el GIF */
+        img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            object-fit: cover; /* Para que se vea bien recortada */
+        }
+
+        /* REPRODUCTOR */
+        audio {
+            width: 100%;
+            height: 30px;
+            outline: none;
+            margin-top: 5px;
+            filter: sepia(20%) saturate(140%); /* Un toque de color al reproductor */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor">
+        <h1>Para ti 🌸</h1>
+
+        <img src="PEGAR_AQUI_EL_LINK_DE_LA_IMAGEN_QUE_COPIASTE" alt="Lirios">
+
+        <p>
+            Te mando estos lirios virtuales.<br>
+            Espero que te gusten tanto como a mí.<br>
+            ¡Que tengas un lindo día!
+        </p>
+
+        <audio controls autoplay loop>
+            <source src="cancion.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+</body>
+</html>
