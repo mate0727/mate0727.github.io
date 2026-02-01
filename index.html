@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Antonella ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@600&display=swap" rel="stylesheet">
     
     <style>
         /* ESTILOS GENERALES */
@@ -53,7 +53,7 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.3);
             animation: latido 1.5s infinite;
             font-family: 'Quicksand', sans-serif;
-            z-index: 101; /* Aseguramos que esté encima de todo */
+            z-index: 101;
         }
 
         @keyframes latido {
@@ -77,33 +77,42 @@
             border: 2px solid rgba(255, 255, 255, 0.9);
         }
 
-        /* ESTILOS DE TEXTO (Letras delgadas y bonitas) */
+        /* ESTILOS DE TEXTO (BLANCO CON BORDE NEGRO) */
         h1 {
             font-family: 'Dancing Script', cursive; 
-            color: #4a0e4e; 
+            color: white; /* Texto blanco */
             margin-top: 0px; 
             font-size: 3.5em; 
             margin-bottom: 20px;
-            /* Resplandor blanco para leer bien sin engordar */
-            text-shadow: 0 0 10px #fff, 0 0 20px #fff;
+            /* Borde negro nítido */
+            text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
         }
 
         p {
             font-family: 'Quicksand', sans-serif; 
-            color: #000; 
+            color: white; /* Texto blanco */
             line-height: 1.6; 
             font-size: 1.25em; 
             margin-bottom: 20px;
-            font-weight: 500; 
-            text-shadow: 0px 0px 5px #fff, 0px 0px 5px #fff;
+            font-weight: 600; /* Un poco más grueso para que el blanco resalte */
+            /* Borde negro nítido */
+            text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
         }
 
         .firma {
             font-family: 'Dancing Script', cursive;
-            color: #4a0e4e; 
+            color: white; 
             font-weight: bold; font-size: 2em;
             margin-top: 30px;
-            text-shadow: 0 0 10px #fff, 0 0 20px #fff;
+            /* Borde negro nítido */
+            text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+        }
+        
+        /* Decoración interna de la carta */
+        .deco-carta {
+            font-size: 28px; 
+            color: white; 
+            text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
         }
 
         /* ELEMENTOS FLOTANTES */
@@ -135,7 +144,7 @@
     </div>
 
     <div class="carta" id="carta">
-        <div style="font-size: 28px; margin-bottom: 10px; color: #4a0e4e; text-shadow: 0 0 5px #fff;">🌸 💜 🌸</div>
+        <div class="deco-carta" style="margin-bottom: 10px;">🌸 💜 🌸</div>
         
         <h1>TE AMOOO</h1>
 
@@ -149,7 +158,7 @@
             Si me pidieran un motivo para hacerlo, serían muchos: tu manera de mirar, de escuchar, de estar cuando importa. Por eso y por todo lo que aún no se dice...
         </p>
         
-        <div style="font-size: 28px; margin-top: 30px; color: #4a0e4e; text-shadow: 0 0 5px #fff;">🌸 💜 🌸</div>
+        <div class="deco-carta" style="margin-top: 30px;">🌸 💜 🌸</div>
         <p class="firma">¿Quieres ser mi San Valentín?</p>
     </div>
 
@@ -173,8 +182,7 @@
             // 2. Intentamos reproducir la música (Protegido contra errores)
             const audio = document.getElementById('musica');
             if(audio) {
-                // Si la música falla, la carta sigue abierta (catch del error)
-                audio.play().catch(error => console.log("La música esperará un clic más: " + error));
+                audio.play().catch(error => console.log("Play error: " + error));
             }
         }
 
