@@ -17,19 +17,18 @@
             overflow: hidden; 
         }
 
-        /* FONDO PRINCIPAL ANIMADO (Se mantiene igual de bonito) */
+        /* FONDO PRINCIPAL ANIMADO (Más claro y brillante) */
         .fondo {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            /* Degradado romántico que se mueve */
-            background: linear-gradient(-45deg, #5f0a18, #961e35, #b94e67, #e28c9a);
+            /* He aclarado los colores: Vino brillante, rojo suave y rosa viejo */
+            background: linear-gradient(-45deg, #900c3f, #c70039, #d65db1, #ff9a9e);
             background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            animation: gradientBG 12s ease infinite;
             z-index: -1;
-            filter: brightness(0.8); /* Un poco más oscuro para elegancia */
         }
 
         @keyframes gradientBG {
@@ -45,8 +44,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(50, 0, 10, 0.4); /* Tono vino oscuro transparente */
-            backdrop-filter: blur(10px); 
+            /* Fondo un poco más transparente para que se vea el color bonito de atrás */
+            background-color: rgba(60, 10, 20, 0.2); 
+            backdrop-filter: blur(8px); 
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -58,15 +58,15 @@
         .boton-abrir {
             padding: 15px 50px;
             font-size: 18px;
-            background-color: #961e35; /* Color vino para el botón */
-            color: #ffe4b5; /* Texto dorado claro */
-            border: 2px solid #ffe4b5;
+            background-color: #900c3f; /* Botón color vino */
+            color: #fffdd0; /* Texto crema */
+            border: 1px solid #fffdd0;
             border-radius: 50px;
             cursor: pointer;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 2px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
             animation: latido 1.5s infinite;
         }
 
@@ -76,56 +76,54 @@
             100% { transform: scale(1); }
         }
 
-        /* --- LA CARTA TEMA VINO --- */
+        /* --- LA CARTA (Mantiene el estilo elegante) --- */
         .carta {
             display: none; 
-            /* FONDO COLOR VINO: Un degradado profundo y elegante */
-            background: linear-gradient(135deg, #722F37 0%, #501d24 100%);
+            /* Fondo Vino Profundo */
+            background: linear-gradient(135deg, #581845 0%, #900c3f 100%);
             padding: 40px;
             max-width: 500px;
             width: 85%;
             text-align: center;
             position: relative;
             z-index: 10;
-            box-shadow: 0 30px 70px rgba(0,0,0,0.5); 
+            box-shadow: 0 30px 70px rgba(0,0,0,0.4); 
             border-radius: 15px;
             max-height: 80vh;
             overflow-y: auto;
-            /* Borde dorado para contrastar */
-            border: 3px solid #d4af37; 
+            border: 2px solid #d4af37; /* Borde dorado fino */
         }
 
-        /* Estilos para los divisores florales */
         .carta-decoracion {
-            color: #d4af37; /* Color dorado */
-            font-size: 20px;
+            color: #d4af37; 
+            font-size: 22px;
             margin-bottom: 15px;
-            opacity: 0.8;
+            opacity: 0.9;
         }
 
         h1 {
-            color: #ffe4b5; /* Título en color crema/dorado claro */
+            color: #fffdd0; /* Crema también aquí */
             margin-top: 10px;
             font-size: 2.5em;
             margin-bottom: 25px;
             font-family: 'Times New Roman', serif;
             letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
         }
 
         p {
-            color: #fdf5e6; /* Texto principal en color crema suave para leer bien */
+            color: #fff5ee; /* Blanco hueso para leer muy claro */
             line-height: 1.9;
             font-size: 1.25em;
             margin-bottom: 25px;
         }
 
         .decoracion-texto {
-            color: #ff6b81; /* El corazón dentro del texto en un rosa que resalte */
+            color: #ffc3a0; /* Corazón en tono melocotón suave */
         }
 
         .firma {
-            color: #ffe4b5; /* Firma en dorado */
+            color: #fffdd0; /* Crema */
             font-weight: bold;
             font-size: 1.4em;
             margin-top: 35px;
@@ -143,18 +141,6 @@
             z-index: 0;
             overflow: hidden;
         }
-        .corazon {
-            position: absolute;
-            bottom: -10px;
-            color: rgba(255, 228, 181, 0.4); /* Corazones dorados transparentes */
-            font-size: 20px;
-            animation: subir 10s linear infinite;
-        }
-        @keyframes subir {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-100vh); opacity: 0; }
-        }
-
     </style>
 </head>
 <body>
@@ -162,7 +148,7 @@
     <div class="fondo"></div>
 
     <div id="pantalla-inicio">
-        <h1 style="color: #ffe4b5; font-size: 2em; margin-bottom: 30px; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Para: Antonella</h1>
+        <h1 style="color: #fffdd0; font-size: 2.5em; margin-bottom: 30px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); font-family: 'Times New Roman', serif;">Para: Antonella</h1>
         <button class="boton-abrir" onclick="abrirCarta()">ABRIR CARTA</button>
     </div>
 
@@ -204,13 +190,27 @@
 
         function crearCorazones() {
             const contenedor = document.querySelector('.fondo');
-            for(let i=0; i<25; i++) {
+            for(let i=0; i<20; i++) {
                 let corazon = document.createElement('div');
-                corazon.innerHTML = '❤';
+                corazon.innerHTML = '❤️';
                 corazon.className = 'corazon';
+                corazon.style.position = 'absolute';
+                corazon.style.color = 'rgba(255, 255, 255, 0.4)';
                 corazon.style.left = Math.random() * 100 + 'vw';
-                corazon.style.animationDuration = Math.random() * 5 + 5 + 's';
+                corazon.style.bottom = '-20px';
+                corazon.style.animation = 'subir ' + (Math.random() * 5 + 5) + 's linear infinite';
                 corazon.style.fontSize = Math.random() * 20 + 15 + 'px';
+                
+                // Añadimos la animación aquí mismo para asegurar que funcione
+                let style = document.createElement('style');
+                style.innerHTML = `
+                    @keyframes subir {
+                        0% { transform: translateY(0); opacity: 1; }
+                        100% { transform: translateY(-100vh); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(style);
+                
                 contenedor.appendChild(corazon);
             }
         }
