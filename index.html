@@ -11,7 +11,7 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Quicksand', sans-serif; /* Letra limpia por defecto */
+            font-family: 'Quicksand', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -53,6 +53,7 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.3);
             animation: latido 1.5s infinite;
             font-family: 'Quicksand', sans-serif;
+            z-index: 101; /* Aseguramos que esté encima de todo */
         }
 
         @keyframes latido {
@@ -62,7 +63,7 @@
         /* --- LA CARTA --- */
         .carta {
             display: none;
-            /* Foto nítida de fondo */
+            /* Tu foto de fondo */
             background: url('fondo.jfif.jfif');
             background-size: cover;
             background-position: center;
@@ -76,26 +77,25 @@
             border: 2px solid rgba(255, 255, 255, 0.9);
         }
 
-        /* ESTILOS DE TEXTO MEJORADOS */
+        /* ESTILOS DE TEXTO (Letras delgadas y bonitas) */
         h1 {
-            font-family: 'Dancing Script', cursive; /* Letra cursiva bonita */
-            color: #4a0e4e; /* Morado oscuro elegante */
+            font-family: 'Dancing Script', cursive; 
+            color: #4a0e4e; 
             margin-top: 0px; 
-            font-size: 3.5em; /* Título grande */
+            font-size: 3.5em; 
             margin-bottom: 20px;
-            /* Resplandor blanco suave en lugar de borde duro */
-            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
+            /* Resplandor blanco para leer bien sin engordar */
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff;
         }
 
         p {
-            font-family: 'Quicksand', sans-serif; /* Letra moderna y delgada */
-            color: #000; /* Texto negro */
+            font-family: 'Quicksand', sans-serif; 
+            color: #000; 
             line-height: 1.6; 
             font-size: 1.25em; 
             margin-bottom: 20px;
-            font-weight: 500; /* Grosor normal, no negrita */
-            /* Resplandor blanco para que se lea perfecto sin engordar la letra */
-            text-shadow: 0px 0px 4px #fff, 0px 0px 4px #fff;
+            font-weight: 500; 
+            text-shadow: 0px 0px 5px #fff, 0px 0px 5px #fff;
         }
 
         .firma {
@@ -103,7 +103,7 @@
             color: #4a0e4e; 
             font-weight: bold; font-size: 2em;
             margin-top: 30px;
-            text-shadow: 0 0 5px #fff, 0 0 10px #fff;
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff;
         }
 
         /* ELEMENTOS FLOTANTES */
@@ -149,4 +149,53 @@
             Si me pidieran un motivo para hacerlo, serían muchos: tu manera de mirar, de escuchar, de estar cuando importa. Por eso y por todo lo que aún no se dice...
         </p>
         
-        <div style="font-size: 28px; margin-top: 30px; color: #4a0e4e; text-shadow: 0 0 5px #fff;">
+        <div style="font-size: 28px; margin-top: 30px; color: #4a0e4e; text-shadow: 0 0 5px #fff;">🌸 💜 🌸</div>
+        <p class="firma">¿Quieres ser mi San Valentín?</p>
+    </div>
+
+    <audio id="musica" loop>
+        <source src="cancion.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        function abrirCarta() {
+            // 1. Primero hacemos visible la carta (Prioridad visual)
+            const portada = document.getElementById('pantalla-inicio');
+            const carta = document.getElementById('carta');
+            
+            portada.style.opacity = '0';
+            setTimeout(() => {
+                portada.style.display = 'none';
+            }, 1000);
+            
+            carta.style.display = 'block';
+            
+            // 2. Intentamos reproducir la música (Protegido contra errores)
+            const audio = document.getElementById('musica');
+            if(audio) {
+                // Si la música falla, la carta sigue abierta (catch del error)
+                audio.play().catch(error => console.log("La música esperará un clic más: " + error));
+            }
+        }
+
+        // Decoración flotante
+        function crearDecoracionFlotante() {
+            const contenedor = document.getElementById('contenedor-flotante');
+            const tipos = ['🌸', '🍇', '💜', '🍃', '🌷', '🤍']; 
+            
+            for(let i=0; i<35; i++) {
+                let elemento = document.createElement('div');
+                elemento.innerHTML = tipos[Math.floor(Math.random() * tipos.length)];
+                elemento.className = 'elemento';
+                elemento.style.left = Math.random() * 100 + 'vw';
+                elemento.style.animationDuration = Math.random() * 5 + 8 + 's';
+                elemento.style.animationDelay = Math.random() * 5 + 's';
+                elemento.style.fontSize = Math.random() * 25 + 20 + 'px';
+                contenedor.appendChild(elemento);
+            }
+        }
+        crearDecoracionFlotante();
+    </script>
+
+</body>
+</html>
