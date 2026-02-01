@@ -17,14 +17,13 @@
             overflow: hidden; 
         }
 
-        /* FONDO ANIMADO (Colores bonitos sin fotos) */
+        /* FONDO PRINCIPAL ANIMADO (Colores) */
         .fondo {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            /* Degradado romántico que se mueve */
             background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
@@ -37,7 +36,7 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* PANTALLA DE INICIO (PORTADA) */
+        /* PANTALLA DE INICIO */
         #pantalla-inicio {
             position: fixed;
             top: 0;
@@ -75,10 +74,11 @@
             100% { transform: scale(1); }
         }
 
-        /* LA CARTA */
+        /* --- AQUÍ ESTÁ EL CAMBIO DEL FONDO DE LA CARTA --- */
         .carta {
             display: none; 
-            background-color: #fff; 
+            /* En vez de blanco, usamos un degradado suave crema y rosa */
+            background: linear-gradient(to bottom, #fffdf9, #ffe6ea);
             padding: 40px;
             max-width: 500px;
             width: 85%;
@@ -86,22 +86,24 @@
             position: relative;
             z-index: 10;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3); 
-            border-radius: 8px; 
+            border-radius: 15px; /* Bordes más redondeados */
             max-height: 80vh;
             overflow-y: auto;
+            border: 3px solid #fff; /* Borde blanco elegante */
         }
         
-        .carta::before {
-            content: '';
+        /* Decoración floral en las esquinas usando código */
+        .carta::before, .carta::after {
+            content: '🌸';
             position: absolute;
-            top: 10px; left: 10px; right: 10px; bottom: 10px;
-            border: 1px solid #e73c7e;
-            border-radius: 4px;
-            pointer-events: none;
+            font-size: 30px;
+            opacity: 0.5;
         }
+        .carta::before { top: 15px; left: 15px; transform: rotate(-20deg); }
+        .carta::after { bottom: 15px; right: 15px; transform: rotate(20deg); }
 
         h1 {
-            color: #e73c7e;
+            color: #d63384; /* Color rosa más intenso */
             margin-top: 10px;
             font-size: 2.2em;
             margin-bottom: 25px;
@@ -110,21 +112,26 @@
         }
 
         p {
-            color: #555;
-            line-height: 1.8;
-            font-size: 1.15em;
-            margin-bottom: 20px;
+            color: #4a4a4a; /* Texto gris oscuro suave */
+            line-height: 1.9;
+            font-size: 1.2em;
+            margin-bottom: 25px;
+        }
+
+        .decoracion-texto {
+            color: #d63384;
+            font-size: 1.2em;
         }
 
         .firma {
-            color: #e73c7e;
+            color: #d63384;
             font-weight: bold;
             font-size: 1.3em;
             margin-top: 35px;
             font-style: italic;
         }
 
-        /* Corazones flotantes */
+        /* Corazones flotantes del fondo */
         .corazones {
             position: fixed;
             width: 100%;
@@ -159,18 +166,21 @@
     </div>
 
     <div class="carta" id="carta">
+        <div style="margin-bottom: 10px; font-size: 20px;">🌿🌸🌿</div>
+        
         <h1>TE AMOOO</h1>
 
         <p>
             Después de una cansada búsqueda durante tantos años, al fin he encontrado con quien quiero celebrar no solo este, sino el resto de los 14 de Febrero.
         </p>
         <p>
-            Según fuentes cercanas (mi corazón ❤️) eres esa persona por la cual lo daría todo y no me hago a la idea de estar sin ti.
+            Según fuentes cercanas (mi corazón <span class="decoracion-texto">❤️</span>) eres esa persona por la cual lo daría todo y no me hago a la idea de estar sin ti.
         </p>
         <p>
             Si me pidieran un motivo para hacerlo, serían muchos: tu manera de mirar, de escuchar, de estar cuando importa. Por eso y por todo lo que aún no se dice...
         </p>
         
+        <div style="margin-top: 30px; font-size: 20px;">🍃🌺🍃</div>
         <p class="firma">¿Quieres ser mi San Valentín?</p>
     </div>
 
@@ -191,16 +201,15 @@
             audio.play();
         }
 
-        // Script para corazones
         function crearCorazones() {
             const contenedor = document.querySelector('.fondo');
-            for(let i=0; i<15; i++) {
+            for(let i=0; i<20; i++) {
                 let corazon = document.createElement('div');
                 corazon.innerHTML = '❤️';
                 corazon.className = 'corazon';
                 corazon.style.left = Math.random() * 100 + 'vw';
                 corazon.style.animationDuration = Math.random() * 5 + 5 + 's';
-                corazon.style.fontSize = Math.random() * 20 + 10 + 'px';
+                corazon.style.fontSize = Math.random() * 20 + 15 + 'px';
                 contenedor.appendChild(corazon);
             }
         }
