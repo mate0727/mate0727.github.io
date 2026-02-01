@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para ti ❤️</title>
+    <title>Para Antonella ❤️</title>
     <style>
         /* ESTILOS GENERALES */
         body {
@@ -17,32 +17,35 @@
             overflow: hidden; 
         }
 
-        /* FONDO (LA FOTO QUE SUBISTE) */
+        /* FONDO ANIMADO (Colores bonitos sin fotos) */
         .fondo {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            
-            /* AQUÍ ESTÁ EL CAMBIO: El nombre exacto con doble extensión */
-            background-image: url('fondo.jfif.jfif');
-            
-            background-size: cover; 
-            background-position: center;
+            /* Degradado romántico que se mueve */
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             z-index: -1;
-            /* Oscurecemos un poco para que se lea la carta */
-            filter: brightness(0.6); 
         }
 
-        /* PANTALLA DE INICIO */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* PANTALLA DE INICIO (PORTADA) */
         #pantalla-inicio {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.6); 
+            background-color: rgba(255, 255, 255, 0.2); 
+            backdrop-filter: blur(10px); 
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -52,68 +55,96 @@
         }
 
         .boton-abrir {
-            padding: 15px 40px;
+            padding: 15px 50px;
             font-size: 18px;
-            background-color: #d63384; 
-            color: white;
-            border: 2px solid white;
+            background-color: white; 
+            color: #e73c7e;
+            border: none;
             border-radius: 50px;
             cursor: pointer;
+            font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 2px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
             animation: latido 1.5s infinite;
         }
 
         @keyframes latido {
             0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
 
-        /* DISEÑO DE LA CARTA */
+        /* LA CARTA */
         .carta {
             display: none; 
-            background-color: #fffdf7; 
+            background-color: #fff; 
             padding: 40px;
             max-width: 500px;
-            width: 80%;
+            width: 85%;
             text-align: center;
             position: relative;
             z-index: 10;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5); 
-            border-radius: 5px; 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3); 
+            border-radius: 8px; 
             max-height: 80vh;
             overflow-y: auto;
         }
         
-        .borde-carta {
-            border: 2px solid #d63384;
-            padding: 20px;
-            height: 100%;
-            box-sizing: border-box;
+        .carta::before {
+            content: '';
+            position: absolute;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 1px solid #e73c7e;
+            border-radius: 4px;
+            pointer-events: none;
         }
 
         h1 {
-            color: #d63384;
-            margin-top: 0;
-            font-size: 2.5em;
-            margin-bottom: 20px;
+            color: #e73c7e;
+            margin-top: 10px;
+            font-size: 2.2em;
+            margin-bottom: 25px;
             font-family: 'Times New Roman', serif;
+            letter-spacing: 1px;
         }
 
         p {
-            color: #2c2c2c;
+            color: #555;
             line-height: 1.8;
-            font-size: 1.2em;
+            font-size: 1.15em;
             margin-bottom: 20px;
         }
 
         .firma {
-            color: #d63384;
+            color: #e73c7e;
             font-weight: bold;
-            font-size: 1.4em;
-            margin-top: 30px;
+            font-size: 1.3em;
+            margin-top: 35px;
             font-style: italic;
+        }
+
+        /* Corazones flotantes */
+        .corazones {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .corazon {
+            position: absolute;
+            bottom: -10px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 20px;
+            animation: subir 10s linear infinite;
+        }
+        @keyframes subir {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
         }
 
     </style>
@@ -123,26 +154,24 @@
     <div class="fondo"></div>
 
     <div id="pantalla-inicio">
-        <h1 style="color: white; font-size: 1.5em; margin-bottom: 30px;">Tienes una carta nueva 💌</h1>
-        <button class="boton-abrir" onclick="abrirCarta()">LEER AHORA</button>
+        <h1 style="color: white; font-size: 2em; margin-bottom: 30px; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">Para: Antonella</h1>
+        <button class="boton-abrir" onclick="abrirCarta()">ABRIR CARTA</button>
     </div>
 
     <div class="carta" id="carta">
-        <div class="borde-carta">
-            <h1>TE AMOOO</h1>
+        <h1>TE AMOOO</h1>
 
-            <p>
-                Después de una cansada búsqueda durante tantos años, al fin he encontrado con quien quiero celebrar no solo este, sino el resto de los 14 de Febrero.
-            </p>
-            <p>
-                Según fuentes cercanas (mi corazón ❤️) eres esa persona por la cual lo daría todo y no me hago a la idea de estar sin ti.
-            </p>
-            <p>
-                Si me pidieran un motivo para hacerlo, serían muchos: tu manera de mirar, de escuchar, de estar cuando importa. Por eso y por todo lo que aún no se dice...
-            </p>
-            
-            <p class="firma">¿Quieres ser mi San Valentín?</p>
-        </div>
+        <p>
+            Después de una cansada búsqueda durante tantos años, al fin he encontrado con quien quiero celebrar no solo este, sino el resto de los 14 de Febrero.
+        </p>
+        <p>
+            Según fuentes cercanas (mi corazón ❤️) eres esa persona por la cual lo daría todo y no me hago a la idea de estar sin ti.
+        </p>
+        <p>
+            Si me pidieran un motivo para hacerlo, serían muchos: tu manera de mirar, de escuchar, de estar cuando importa. Por eso y por todo lo que aún no se dice...
+        </p>
+        
+        <p class="firma">¿Quieres ser mi San Valentín?</p>
     </div>
 
     <audio id="musica" loop>
@@ -161,6 +190,21 @@
             var audio = document.getElementById('musica');
             audio.play();
         }
+
+        // Script para corazones
+        function crearCorazones() {
+            const contenedor = document.querySelector('.fondo');
+            for(let i=0; i<15; i++) {
+                let corazon = document.createElement('div');
+                corazon.innerHTML = '❤️';
+                corazon.className = 'corazon';
+                corazon.style.left = Math.random() * 100 + 'vw';
+                corazon.style.animationDuration = Math.random() * 5 + 5 + 's';
+                corazon.style.fontSize = Math.random() * 20 + 10 + 'px';
+                contenedor.appendChild(corazon);
+            }
+        }
+        crearCorazones();
     </script>
 
 </body>
