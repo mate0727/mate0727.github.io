@@ -9,7 +9,7 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Georgia', serif;
+            font-family: 'Georgia', serif; /* Letra clásica de carta */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,29 +17,32 @@
             overflow: hidden; 
         }
 
-        /* FONDO DE LA PÁGINA (TULIPANES) */
+        /* FONDO (LA FOTO QUE SUBISTE) */
         .fondo {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            /* Aquí está tu imagen de fondo */
-            background-image: url('https://i.pinimg.com/736x/88/2c/3f/882c3f153a794179d673523589b53757.jpg');
-            background-size: cover; /* Para que cubra toda la pantalla */
+            
+            /* AQUÍ BUSCA TU ARCHIVO SUBIDO */
+            background-image: url('fondo.jpg');
+            
+            background-size: cover; 
             background-position: center;
             z-index: -1;
-            filter: brightness(0.7); /* Oscurece un poco la foto para que se lea la carta */
+            /* Esto oscurece un poco la foto para que no moleste a la vista */
+            filter: brightness(0.6); 
         }
 
-        /* PANTALLA DE INICIO (PORTADA) */
+        /* PANTALLA DE INICIO */
         #pantalla-inicio {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 230, 234, 0.9); /* Un velo rosa semitransparente */
+            background-color: rgba(0,0,0,0.6); 
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -50,13 +53,14 @@
 
         .boton-abrir {
             padding: 15px 40px;
-            font-size: 20px;
-            background-color: #6a4c93; /* Un morado que combina con los tulipanes */
+            font-size: 18px;
+            background-color: #d63384; 
             color: white;
-            border: none;
+            border: 2px solid white;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(106, 76, 147, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 2px;
             animation: latido 1.5s infinite;
         }
 
@@ -66,53 +70,52 @@
             100% { transform: scale(1); }
         }
 
-        /* LA CARTA */
+        /* DISEÑO DE LA CARTA (PAPEL) */
         .carta {
             display: none; 
-            background: rgba(255, 255, 255, 0.95); /* Blanco casi opaco */
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            /* Color papel crema/blanco */
+            background-color: #fffdf7; 
+            padding: 40px;
             max-width: 500px;
-            width: 85%;
+            width: 80%;
             text-align: center;
-            border: 2px solid #ddd;
             position: relative;
             z-index: 10;
-            max-height: 85vh; 
-            overflow-y: auto; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5); /* Sombra realista */
+            border-radius: 5px; /* Bordes poco redondeados como papel */
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        /* Efecto de borde doble elegante */
+        .borde-carta {
+            border: 2px solid #d63384;
+            padding: 20px;
+            height: 100%;
+            box-sizing: border-box;
         }
 
         h1 {
-            color: #6a4c93; /* Morado */
+            color: #d63384;
             margin-top: 0;
-            font-size: 2em;
-        }
-
-        .imagen-contenedor {
-            width: 100%;
-            border-radius: 10px;
-            overflow: hidden;
+            font-size: 2.5em;
             margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        img {
-            width: 100%;
-            display: block;
+            font-family: 'Times New Roman', serif;
         }
 
         p {
-            color: #333;
-            line-height: 1.6;
-            font-size: 1.1em;
+            color: #2c2c2c;
+            line-height: 1.8;
+            font-size: 1.2em;
+            margin-bottom: 20px;
         }
 
         .firma {
-            color: #6a4c93;
+            color: #d63384;
             font-weight: bold;
-            font-size: 1.3em;
-            margin-top: 25px;
+            font-size: 1.4em;
+            margin-top: 30px;
+            font-style: italic;
         }
 
     </style>
@@ -122,28 +125,26 @@
     <div class="fondo"></div>
 
     <div id="pantalla-inicio">
-        <h1 style="margin-bottom: 20px; color: #6a4c93;">Tengo algo para ti... 💌</h1>
-        <button class="boton-abrir" onclick="abrirCarta()">ABRIR REGALO</button>
+        <h1 style="color: white; font-size: 1.5em; margin-bottom: 30px;">Tienes una carta nueva 💌</h1>
+        <button class="boton-abrir" onclick="abrirCarta()">LEER AHORA</button>
     </div>
 
     <div class="carta" id="carta">
-        <h1>TE AMOOO</h1>
+        <div class="borde-carta">
+            <h1>TE AMOOO</h1>
 
-        <div class="imagen-contenedor">
-            <img src="https://i.pinimg.com/originals/8a/83/96/8a839616035889381669460010901768.gif" alt="Nosotros">
+            <p>
+                Después de una cansada búsqueda durante tantos años, al fin he encontrado con quien quiero celebrar no solo este, sino el resto de los 14 de Febrero.
+            </p>
+            <p>
+                Según fuentes cercanas (mi corazón ❤️) eres esa persona por la cual lo daría todo y no me hago a la idea de estar sin ti.
+            </p>
+            <p>
+                Si me pidieran un motivo para hacerlo, serían muchos: tu manera de mirar, de escuchar, de estar cuando importa. Por eso y por todo lo que aún no se dice...
+            </p>
+            
+            <p class="firma">¿Quieres ser mi San Valentín?</p>
         </div>
-
-        <p>
-            Después de una cansada búsqueda durante tantos años, al fin he encontrado con quien quiero celebrar no solo este, sino el resto de los 14 de Febrero.
-        </p>
-        <p>
-            Según fuentes cercanas (mi corazón ❤️) eres esa persona por la cual lo daría todo y no me hago a la idea de estar sin ti.
-        </p>
-        <p>
-            Si me pidieran un motivo para hacerlo, serían muchos: tu manera de mirar, de escuchar, de estar cuando importa. Por eso y por todo lo que aún no se dice...
-        </p>
-        
-        <p class="firma">¿Quieres ser mi San Valentín?</p>
     </div>
 
     <audio id="musica" loop>
