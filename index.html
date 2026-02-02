@@ -22,15 +22,15 @@
         #pantalla-inicio {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #000; /* Negro total */
+            background-color: #000;
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 999; /* Siempre encima */
+            z-index: 999;
         }
 
         .btn-abrir {
-            padding: 25px 50px;
+            padding: 25px 60px;
             font-size: 24px;
             background-color: white; 
             color: black;
@@ -43,12 +43,12 @@
         }
 
         .btn-abrir:active {
-            transform: scale(0.95); /* Efecto de clic */
+            transform: scale(0.95);
         }
 
         /* 2. CONTENIDO PRINCIPAL */
         #contenido {
-            display: none; /* Oculto al principio */
+            display: none;
             text-align: center;
             width: 100%;
             max-width: 600px;
@@ -57,13 +57,12 @@
 
         h1 {
             font-family: 'Dancing Script', cursive;
-            color: #d32f2f; /* Rojo */
+            color: #d32f2f;
             font-size: 5em;
             margin-bottom: 20px;
             margin-top: 0;
         }
 
-        /* La cara que cambia */
         #cara-reaccion {
             font-size: 100px;
             margin-bottom: 40px;
@@ -91,13 +90,13 @@
         }
 
         #btn-si {
-            background-color: #4CAF50; /* Verde */
+            background-color: #4CAF50;
             color: white;
             box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
         }
 
         #btn-no {
-            background-color: #f44336; /* Rojo */
+            background-color: #f44336;
             color: white;
             box-shadow: 0 5px 15px rgba(244, 67, 54, 0.3);
         }
@@ -139,28 +138,38 @@
         <h1 style="color: white; font-size: 6em; text-shadow: 2px 2px 10px rgba(0,0,0,0.2);">TE AMO</h1>
     </div>
 
+    <audio id="musica" loop>
+        <source src="eu.mp3" type="audio/mp3">
+    </audio>
+
     <script>
         let escala = 1;
 
         function iniciar() {
-            // Eliminar pantalla de inicio INMEDIATAMENTE
+            // 1. Quitar pantalla de inicio
             document.getElementById('pantalla-inicio').style.display = 'none';
-            // Mostrar contenido INMEDIATAMENTE
+            // 2. Mostrar contenido
             document.getElementById('contenido').style.display = 'block';
+            
+            // 3. Reproducir música (eu.mp3)
+            var audio = document.getElementById('musica');
+            audio.play().catch(function(error) {
+                console.log("Error al reproducir: " + error);
+            });
         }
 
         function negar() {
-            // 1. Cambiar cara a LLORANDO
+            // Cambiar cara a LLORANDO
             const carasTristes = ["😭", "😢", "😿", "💔", "🥺", "😩"];
             const caraAleatoria = carasTristes[Math.floor(Math.random() * carasTristes.length)];
             document.getElementById('cara-reaccion').innerText = caraAleatoria;
 
-            // 2. Aumentar botón SÍ
+            // Aumentar botón SÍ
             escala += 0.5;
             const btnSi = document.getElementById('btn-si');
             btnSi.style.transform = `scale(${escala})`;
 
-            // 3. Achicar botón NO
+            // Achicar botón NO
             const btnNo = document.getElementById('btn-no');
             let escalaNo = 1 / escala;
             btnNo.style.transform = `scale(${escalaNo})`;
