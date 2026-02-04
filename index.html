@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Antonella</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <title>Para Antonella ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@600&display=swap" rel="stylesheet">
+    
     <style>
+        /* ESTILOS GENERALES */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Quicksand', sans-serif;
-            background-color: #fdfbfb;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -18,167 +19,190 @@
             overflow: hidden;
         }
 
-        /* 1. PANTALLA DE INICIO */
+        /* FONDO DE LA PÁGINA */
+        .fondo-pagina {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(-45deg, #e2d1c3, #e5b7be, #c7ceea, #e2d1c3);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            z-index: -2;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* PANTALLA DE INICIO */
         #pantalla-inicio {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 100; transition: opacity 1s ease;
         }
 
-        .btn-abrir {
-            padding: 25px 60px;
-            font-size: 24px;
-            background-color: white; 
-            color: black;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            text-transform: lowercase; /* "abrelo" */
-            box-shadow: 0 0 20px rgba(255,255,255,0.5);
-        }
-
-        .btn-abrir:active {
-            transform: scale(0.95);
-        }
-
-        /* 2. CONTENIDO PRINCIPAL */
-        #contenido {
-            display: none;
-            text-align: center;
-            width: 100%;
-            max-width: 600px;
-            z-index: 100;
-        }
-
-        h1 {
-            font-family: 'Dancing Script', cursive;
-            color: #d32f2f;
-            font-size: 5em;
-            margin-bottom: 20px;
-            margin-top: 0;
-        }
-
-        #cara-reaccion {
-            font-size: 100px;
-            margin-bottom: 40px;
-            height: 120px;
-        }
-
-        .botones {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            margin-top: 20px;
-            min-height: 100px;
-        }
-
-        button {
-            padding: 15px 40px;
-            border-radius: 50px;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-            font-weight: bold;
+        .boton-abrir {
+            padding: 15px 50px; font-size: 18px;
+            background-color: #9c27b0;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.8); border-radius: 50px;
+            cursor: pointer; font-weight: bold; text-transform: uppercase; letter-spacing: 2px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            animation: latido 1.5s infinite;
             font-family: 'Quicksand', sans-serif;
-            outline: none;
+            z-index: 101;
         }
 
-        #btn-si {
-            background-color: #4CAF50;
-            color: white;
-            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        @keyframes latido {
+            0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); }
         }
 
-        #btn-no {
-            background-color: #f44336;
-            color: white;
-            box-shadow: 0 5px 15px rgba(244, 67, 54, 0.3);
-        }
-
-        /* 3. MENSAJE FINAL */
-        #mensaje-final {
+        /* --- LA CARTA --- */
+        .carta {
             display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            z-index: 1000;
+            /* Tu foto de fondo */
+            background: url('fondo.jfif.jfif');
+            background-size: cover;
+            background-position: center;
+            
+            padding: 40px;
+            max-width: 500px; width: 85%;
+            text-align: center; position: relative; z-index: 10;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+            border-radius: 15px;
+            max-height: 80vh; overflow-y: auto;
+            border: 2px solid rgba(255, 255, 255, 0.9);
         }
 
+        /* ESTILOS DE TEXTO (BLANCO CON BORDE NEGRO) */
+        h1 {
+            font-family: 'Dancing Script', cursive; 
+            color: white; /* Texto blanco */
+            margin-top: 0px; 
+            font-size: 3.5em; 
+            margin-bottom: 20px;
+            /* Borde negro nítido */
+            text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+
+        p {
+            font-family: 'Quicksand', sans-serif; 
+            color: white; /* Texto blanco */
+            line-height: 1.6; 
+            font-size: 1.25em; 
+            margin-bottom: 20px;
+            font-weight: 600; /* Un poco más grueso para que el blanco resalte */
+            /* Borde negro nítido */
+            text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+        }
+
+        .firma {
+            font-family: 'Dancing Script', cursive;
+            color: white; 
+            font-weight: bold; font-size: 2em;
+            margin-top: 30px;
+            /* Borde negro nítido */
+            text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+        }
+        
+        /* Decoración interna de la carta */
+        .deco-carta {
+            font-size: 28px; 
+            color: white; 
+            text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+        }
+
+        /* ELEMENTOS FLOTANTES */
+        .elementos-flotantes {
+            position: fixed; width: 100%; height: 100%;
+            top: 0; left: 0; pointer-events: none; z-index: -1; overflow: hidden;
+        }
+        .elemento {
+            position: absolute; bottom: -50px;
+            opacity: 0;
+            animation: flotar linear infinite;
+            filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2));
+        }
+        @keyframes flotar {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.9; }
+            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+        }
     </style>
 </head>
 <body>
 
+    <div class="fondo-pagina"></div>
+    <div class="elementos-flotantes" id="contenedor-flotante"></div>
+
     <div id="pantalla-inicio">
-        <button class="btn-abrir" onclick="iniciar()">abrelo</button>
+        <h1 style="color: white; font-size: 3em; margin-bottom: 30px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); font-family: 'Dancing Script', cursive;">Para: Antonella</h1>
+        <button class="boton-abrir" onclick="abrirCarta()">ABRIR CARTA 💜</button>
     </div>
 
-    <div id="contenido">
-        <h1>Perdóname</h1>
+    <div class="carta" id="carta">
+        <div class="deco-carta" style="margin-bottom: 10px;">🌸 💜 🌸</div>
         
-        <div id="cara-reaccion">😔</div>
+        <h1>TE AMOOO</h1>
 
-        <div class="botones">
-            <button id="btn-si" onclick="aceptar()">Sí</button>
-            <button id="btn-no" onclick="negar()">No</button>
-        </div>
-    </div>
-
-    <div id="mensaje-final">
-        <div style="font-size: 120px; margin-bottom: 20px;">🥰</div>
-        <h1 style="color: white; font-size: 6em; text-shadow: 2px 2px 10px rgba(0,0,0,0.2);">TE AMO</h1>
+        <p>
+            Después de una cansada búsqueda durante tantos años, al fin he encontrado con quien quiero celebrar no solo este, sino el resto de los 14 de Febrero.
+        </p>
+        <p>
+            Según fuentes cercanas (mi corazón ❤️) eres esa persona por la cual lo daría todo y no me hago a la idea de estar sin ti.
+        </p>
+        <p>
+            Si me pidieran un motivo para hacerlo, serían muchos: tu manera de mirar, de escuchar, de estar cuando importa. Por eso y por todo lo que aún no se dice...
+        </p>
+        
+        <div class="deco-carta" style="margin-top: 30px;">🌸 💜 🌸</div>
+        <p class="firma">¿Quieres ser mi San Valentín?</p>
     </div>
 
     <audio id="musica" loop>
-        <source src="eu.mp3" type="audio/mp3">
+        <source src="cancion.mp3" type="audio/mp3">
     </audio>
 
     <script>
-        let escala = 1;
-
-        function iniciar() {
-            // 1. Quitar pantalla de inicio
-            document.getElementById('pantalla-inicio').style.display = 'none';
-            // 2. Mostrar contenido
-            document.getElementById('contenido').style.display = 'block';
+        function abrirCarta() {
+            // 1. Primero hacemos visible la carta (Prioridad visual)
+            const portada = document.getElementById('pantalla-inicio');
+            const carta = document.getElementById('carta');
             
-            // 3. Reproducir música (eu.mp3)
-            var audio = document.getElementById('musica');
-            audio.play().catch(function(error) {
-                console.log("Error al reproducir: " + error);
-            });
+            portada.style.opacity = '0';
+            setTimeout(() => {
+                portada.style.display = 'none';
+            }, 1000);
+            
+            carta.style.display = 'block';
+            
+            // 2. Intentamos reproducir la música (Protegido contra errores)
+            const audio = document.getElementById('musica');
+            if(audio) {
+                audio.play().catch(error => console.log("Play error: " + error));
+            }
         }
 
-        function negar() {
-            // Cambiar cara a LLORANDO
-            const carasTristes = ["😭", "😢", "😿", "💔", "🥺", "😩"];
-            const caraAleatoria = carasTristes[Math.floor(Math.random() * carasTristes.length)];
-            document.getElementById('cara-reaccion').innerText = caraAleatoria;
-
-            // Aumentar botón SÍ
-            escala += 0.5;
-            const btnSi = document.getElementById('btn-si');
-            btnSi.style.transform = `scale(${escala})`;
-
-            // Achicar botón NO
-            const btnNo = document.getElementById('btn-no');
-            let escalaNo = 1 / escala;
-            btnNo.style.transform = `scale(${escalaNo})`;
+        // Decoración flotante
+        function crearDecoracionFlotante() {
+            const contenedor = document.getElementById('contenedor-flotante');
+            const tipos = ['🌸', '🍇', '💜', '🍃', '🌷', '🤍']; 
+            
+            for(let i=0; i<35; i++) {
+                let elemento = document.createElement('div');
+                elemento.innerHTML = tipos[Math.floor(Math.random() * tipos.length)];
+                elemento.className = 'elemento';
+                elemento.style.left = Math.random() * 100 + 'vw';
+                elemento.style.animationDuration = Math.random() * 5 + 8 + 's';
+                elemento.style.animationDelay = Math.random() * 5 + 's';
+                elemento.style.fontSize = Math.random() * 25 + 20 + 'px';
+                contenedor.appendChild(elemento);
+            }
         }
-
-        function aceptar() {
-            document.getElementById('contenido').style.display = 'none';
-            document.getElementById('mensaje-final').style.display = 'flex';
-        }
+        crearDecoracionFlotante();
     </script>
 
 </body>
